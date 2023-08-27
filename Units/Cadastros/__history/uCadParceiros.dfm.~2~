@@ -1,0 +1,4 @@
+inherited frmCadastros: TfrmCadastros
+  Caption = 'frmCadastros'
+  TextHeight = 15
+end

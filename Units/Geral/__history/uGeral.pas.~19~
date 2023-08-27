@@ -1,0 +1,94 @@
+unit uGeral;
+
+interface
+
+uses
+
+  System.Classes, Vcl.Forms, ZAbstractRODataset, ZAbstractDataset, ZDataset,
+  ZAbstractConnection, ZConnection, Vcl.ExtCtrls, System.StrUtils,
+  System.SysUtils;
+
+  procedure CriarForm(InstanceClass: TComponentClass; var Reference;
+    pTitulo:String;pCentralizar:Boolean);
+
+implementation
+
+procedure CriarForm(InstanceClass: TComponentClass; var Reference;
+  pTitulo:String;pCentralizar:Boolean);
+var
+  vBuscaCampos:TZQuery;
+  vLabeledEdit:TLabeledEdit;
+  vLabel:TLabel;
+  function GetConexao:TZConnection;
+  begin
+    Result  :=  TZConnection.Create(nil);
+    with Result do
+    begin
+      AutoCommit  :=  True;
+      Database    :=  'gestao';
+      User        :=  'root';
+      Password    :=  'Koerich1*';
+      Protocol    :=  'mysql-5';
+      Port        :=  3306;
+      HostName    :=  'localhost';
+      Connected   :=  True;
+    end;
+  end;
+  function GetTextoCampo(pIdTexto:Integer):String;
+  var
+    vTextoQ:TZQuery;
+  begin
+    vTextoQ             :=  TZQuery.Create(nil);
+    vTextoQ.Connection  :=  GetConexao;
+    vTextoQ.Active      :=  False;
+    vTextoQ.SQL.Clear;
+    vTextoQ.SQL.Add('SELECT OBTERTEXTO(:PID,1) AS TEXTO FROM DUAL');
+    vTextoQ.ParamByName('PID').AsInteger  :=  pIdTexto;
+    vTextoQ.Open;
+    vTextoQ.First;
+    vTextoQ.FetchAll;
+    Result  :=  vTextoQ.Fields[0].AsString;
+    FreeAndNil(vTextoQ);
+  end;
+begin
+  Application.CreateForm(InstanceClass,Reference);
+  TForm(Reference).Caption  :=  pTitulo;
+  if (TForm(Reference).Tag > 0) then
+  begin
+    vBuscaCampos  :=  TZQuery.Create(nil);
+    with vBuscaCampos do
+    begin
+      Connection  :=  GetConexao;
+      if Active then
+        Close;
+      SQL.Clear;
+      SQL.Add('SELECT * FROM TB_VISAOCAMPOS WHERE ID_VISAO = :IDV');
+      ParamByName('IDV').AsInteger  :=  TForm(Reference).Tag;
+      Open; First; FetchAll;
+      if (RecordCount >= 1) then
+      begin
+        while not Eof do
+        begin
+          case FieldByName('id_tipocampo').AsInteger of
+            1:begin
+                vLabeledEdit                    :=
+                                          TLabeledEdit.Create(TForm(Reference));
+                vLabeledEdit.Parent             :=  TForm(Reference);
+                vLabeledEdit.EditLabel.Caption  :=  GetTextoCampo(
+                                                           Fields[4].AsInteger);
+                vLabeledEdit.Top                :=  Fields[6].AsInteger;
+                vLabeledEdit.Left               :=  Fields[7].AsInteger;
+                vLabeledEdit.Width              :=  Fields[8].AsInteger;
+              end;
+          end;
+          Next;
+        end;
+      end;
+    end;
+  end;
+  if pCentralizar then
+    TForm(Reference).Position :=  poDesktopCenter;
+  TForm(Reference).ShowModal;
+end;
+
+end.

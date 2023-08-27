@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/08/26 19:33:48.000.252,=C:\Users\edeni\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/08/26 21:12:49.000.870,=C:\Users\edeni\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/08/26 21:32:40.000.117,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Base\uFormBase.pas=C:\Users\edeni\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/08/26 21:32:40.000.117,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Base\uFormBase.dfm=C:\Users\edeni\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/08/26 21:33:39.000.134,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\MeuERP.dproj=C:\Users\edeni\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/08/26 21:33:52.000.744,=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit2.pas</Transaction>
+    <Transaction>2023/08/26 21:34:45.000.082,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Principal\uPrincipal.dfm=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit2.dfm</Transaction>
+    <Transaction>2023/08/26 21:34:45.000.082,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Principal\uPrincipal.pas=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit2.pas</Transaction>
+    <Transaction>2023/08/26 21:49:41.000.094,=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit1.pas</Transaction>
+    <Transaction>2023/08/26 21:50:25.000.846,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Geral\uGeral.pas=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit1.pas</Transaction>
+    <Transaction>2023/08/26 22:48:08.000.637,=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit1.pas</Transaction>
+    <Transaction>2023/08/26 22:48:48.000.016,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Cadastros\uCadParceiros.pas=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit1.pas</Transaction>
+    <Transaction>2023/08/26 22:48:48.000.016,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Cadastros\uCadParceiros.dfm=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit1.dfm</Transaction>
+    <Transaction>2023/08/26 22:49:17.000.997,=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit1.pas</Transaction>
+    <Transaction>2023/08/26 22:49:58.000.759,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Cadastros\uCadParceiros.pas=</Transaction>
+    <Transaction>2023/08/26 22:50:24.000.188,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Cadastros\uCadParceiros.dfm=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit1.dfm</Transaction>
+    <Transaction>2023/08/26 22:50:24.000.188,C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Units\Cadastros\uCadParceiros.pas=C:\Users\edeni\OneDrive\Documentos\GitHub\Meu-ERP\Projeto\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

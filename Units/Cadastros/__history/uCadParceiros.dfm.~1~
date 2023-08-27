@@ -1,0 +1,4 @@
+inherited frmBase1: TfrmBase1
+  Caption = 'frmBase1'
+  TextHeight = 15
+end
