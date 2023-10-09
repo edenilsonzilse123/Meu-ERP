@@ -6,17 +6,28 @@ uses
 
   System.Classes, Vcl.Forms, ZAbstractRODataset, ZAbstractDataset, ZDataset,
   ZAbstractConnection, ZConnection, Vcl.ExtCtrls, System.StrUtils,
-  System.SysUtils, Vcl.StdCtrls, PanelVisao;
+  System.SysUtils, Vcl.StdCtrls, PanelVisao, Vcl.Buttons,Vcl.Controls,
+  Vcl.Graphics,Vcl.Dialogs;
 
   procedure CriarForm(InstanceClass: TComponentClass; var Reference;
-    pTitulo:String;pCentralizar:Boolean);
+    pTitulo:String;pCentralizar,pModal:Boolean;pPainelIniciar:TPanel);
 
 implementation
 
 procedure CriarForm(InstanceClass: TComponentClass; var Reference;
-  pTitulo:String;pCentralizar:Boolean);
+  pTitulo:String;pCentralizar,pModal:Boolean;pPainelIniciar:TPanel);
 var
   x:Integer;
+  vImagem:TImage;
+  vLabel:TLabel;
+  procedure ConverteBitMap(pIcone:TIcon;vImage:TImage);
+  var
+    Pic : TPicture;
+  begin
+    Pic             :=  TPicture.Create;
+    Pic.Icon        :=  pIcone;
+    vImage.Picture  :=  Pic;
+  end;
 begin
   Application.CreateForm(InstanceClass,Reference);
   TForm(Reference).Caption  :=  pTitulo;
@@ -33,7 +44,29 @@ begin
   end;
   if pCentralizar then
     TForm(Reference).Position :=  poDesktopCenter;
-  TForm(Reference).ShowModal;
+  if (pPainelIniciar <> nil) then
+  begin
+    vImagem         :=  TImage.Create(pPainelIniciar);
+    vImagem.Parent  :=  pPainelIniciar;
+    vImagem.Align   :=  alNone;
+    vImagem.Stretch :=  True;
+    vImagem.Width   :=  32;
+    vImagem.Center  :=  True;
+    ConverteBitMap(TForm(Reference).Icon,vImagem);
+    vLabel          :=  TLabel.Create(pPainelIniciar);
+    vLabel.Parent   :=  pPainelIniciar;
+    vLabel.Align    :=  alLeft;
+    vLabel.Caption  :=  pTitulo;
+    vLabel.Layout   :=  tlCenter;
+    vImagem.Align   :=  alLeft;
+  end;
+  if pModal then
+    TForm(Reference).ShowModal
+  else
+    TForm(Reference).Show;
+
+  FreeAndNil(vImagem);
+  FreeAndNil(vLabel);
 end;
 
 end.

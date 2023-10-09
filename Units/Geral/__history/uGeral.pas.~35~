@@ -1,0 +1,56 @@
+unit uGeral;
+
+interface
+
+uses
+
+  System.Classes, Vcl.Forms, ZAbstractRODataset, ZAbstractDataset, ZDataset,
+  ZAbstractConnection, ZConnection, Vcl.ExtCtrls, System.StrUtils,
+  System.SysUtils, Vcl.StdCtrls, PanelVisao, Vcl.Buttons,Vcl.Controls,
+  Vcl.Graphics;
+
+  procedure CriarForm(InstanceClass: TComponentClass; var Reference;
+    pTitulo:String;pCentralizar:Boolean;pPainelIniciar:TPanel);
+
+implementation
+
+procedure CriarForm(InstanceClass: TComponentClass; var Reference;
+  pTitulo:String;pCentralizar:Boolean;pPainelIniciar:TPanel);
+var
+  x:Integer;
+  vImagem:TImage;
+  procedure ConverteBitMap(pIcone:TIcon;vImage:TImage);
+  var
+    Pic : TPicture;
+  begin
+    Pic             :=  TPicture.Create;
+    Pic.Icon        :=  pIcone;
+    vImage.Picture  :=  Pic;
+  end;
+begin
+  Application.CreateForm(InstanceClass,Reference);
+  TForm(Reference).Caption  :=  pTitulo;
+  if (TForm(Reference).Tag > 0) then
+  begin
+    for x := 0 to TForm(Reference).ComponentCount - 1 do
+    begin
+      if (TForm(Reference).Components[x] is TPanelVisao) then
+      begin
+        if (TPanelVisao(TForm(Reference).Components[x]).Visao > 0) then
+          TPanelVisao(TForm(Reference).Components[x]).CriarCampos;
+      end;
+    end;
+  end;
+  if pCentralizar then
+    TForm(Reference).Position :=  poDesktopCenter;
+  if (pPainelIniciar <> nil) then
+  begin
+    vImagem         :=  TImage.Create(pPainelIniciar);
+    vImagem.Parent  :=  pPainelIniciar;
+    vImagem.Align   :=  alLeft;
+    ConverteBitMap(TForm(Reference).Icon,vImagem);
+  end;
+  TForm(Reference).ShowModal;
+end;
+
+end.
